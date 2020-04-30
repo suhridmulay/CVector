@@ -30,6 +30,11 @@ vector add(vector v1, vector v2);
 
 int main() {
     return 0;
+    vector v = vec_null;
+    for (int i = 0; i < 5; i++) {
+        push_into(&v, i);
+    }
+    print_vector(v);
 }
 
 
@@ -42,7 +47,7 @@ void print_vector(vector v) {
     }
     printf("\b]\n");
     printf("Length of vector = %d\n", len);
-    printf("Memory allocated: %d floats", v.size);
+    printf("Memory allocated: %d floats\n", v.size);
 }
 
 void push_into(vector * v, float val) {
