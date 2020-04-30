@@ -30,11 +30,6 @@ vector add(vector v1, vector v2);
 
 int main() {
     return 0;
-    vector v = vec_null;
-    for (int i = 0; i < 5; i++) {
-        push_into(&v, i);
-    }
-    print_vector(v);
 }
 
 
