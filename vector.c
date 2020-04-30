@@ -89,11 +89,14 @@ vector zeroes(int len) {
 vector add(vector v1, vector v2) {
     vector retv;
     if(v1.length != v2.length) {
+        // If both the vectors dont have same length
+        // Raise error and return a NULL vector
         fprintf(stderr, VEC_MATH_ERROR_STR);
         retv.values = NULL;
         retv.length = 0;
         retv.size = 0;
     } else {
+        // Add vectors with standard procedure
         int len = v1.length;
         retv.values = malloc(sizeof(float) * (v1.length + BUFFER));
         if (retv.values == NULL) {
