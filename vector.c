@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
 
 #define EPSILON 0.001
 #define LEARNING_RATE 0.05
@@ -27,6 +28,7 @@ void print_vector(vector v);
 void push_into(vector * v, float val);
 vector zeroes(int len);
 vector add(vector v1, vector v2);
+float normalize(vector v);
 
 int main() {
     return 0;
@@ -111,3 +113,12 @@ vector add(vector v1, vector v2) {
     return retv;
 }
 
+float normalize(vector v) {
+    float norm = 0;
+    int len = v.length;
+    for (int i = 0; i < len; i++) {
+        float x = v.values[i];
+        norm += sqrt(x * x);
+    }
+    return norm;
+}
