@@ -2,9 +2,6 @@
 #include<stdlib.h>
 #include<math.h>
 
-#define EPSILON 0.001
-#define LEARNING_RATE 0.05
-
 // This buffer will be added to a vector when it is full
 #define BUFFER 4
 
