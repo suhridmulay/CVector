@@ -110,5 +110,6 @@ vector add(vector v1, vector v2) {
         retv.size = v1.size;
         retv.length = v1.length;
     }
+    return retv;
 }
 
