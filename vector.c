@@ -23,9 +23,12 @@ typedef struct vector_t vector;
 
 void print_vector(vector v);
 void push_into(vector * v, float val);
+void push_array(vector * v, float * arr, int size);
 vector zeroes(int len);
 vector add(vector v1, vector v2);
 float normalize(vector v);
+float scalar_field(vector v, int dim);
+void negate(vector * v);
 
 int main() {
     return 0;
@@ -74,6 +77,12 @@ void push_into(vector * v, float val) {
     }
 }
 
+void push_array(vector * v, float * arr, int size) {
+    for(int i = 0; i < size; i++) {
+        push_into(v, arr[i]);
+    }
+}
+
 vector zeroes(int len) {
     int size = len + BUFFER;
     vector retv;
@@ -100,6 +109,7 @@ vector add(vector v1, vector v2) {
         retv.values = malloc(sizeof(float) * (v1.length + BUFFER));
         if (retv.values == NULL) {
             fprintf(stderr, MEM_ERR_STR);
+            return vec_null;
         }
         for(int i = 0; i < len; i++) {
             retv.values[i] = v1.values[i] + v2.values[i];
@@ -118,4 +128,33 @@ float normalize(vector v) {
         norm += sqrt(x * x);
     }
     return norm;
+}
+
+float scalar_field(vector v, int dim) {
+    if (v.length != dim) {
+        fprintf(stderr, VEC_MATH_ERROR_STR);
+        return NAN;
+    }
+    /* Write your function defintion here */
+}
+
+void negate(vector * v) {
+    int len = v->length;
+    for (int i = 0; i < len; i++) {
+        v->values[i] = -(v->values[i]);
+    }
+}
+
+float dot_product(vector v1, vector v2) {
+    float res = 0;
+    if (v1.length != v2.length) {
+        fprintf(stderr, VEC_MATH_ERROR_STR);
+        return NAN;
+    } else {
+        int len = v1.length;
+        for(int i = 0; i < len; i++) {
+            res += v1.values[i] * v2.values[i];
+        }
+        return res;
+    }
 }

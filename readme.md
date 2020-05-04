@@ -12,4 +12,6 @@ We currently support,
 ## Planned
 - Dot product
 - Normalized value
+- Vector fields
+- Support for vector functions
 - TBD
