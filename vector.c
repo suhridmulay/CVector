@@ -2,6 +2,10 @@
 #include<stdlib.h>
 #include<math.h>
 
+#ifndef TYPE
+#define TYPE float
+#endif
+
 // This buffer will be added to a vector when it is full
 #define BUFFER 4
 
@@ -10,7 +14,7 @@
 
 struct vector_t {
     // Actual array of values in the vector
-    float * values;
+    TYPE * values;
     // Length of the vector
     int length;
     // The size of vector space allocated to the element
@@ -29,6 +33,7 @@ vector add(vector v1, vector v2);
 float normalize(vector v);
 float scalar_field(vector v, int dim);
 void negate(vector * v);
+void delete(vector * v);
 
 int main() {
     return 0;
@@ -136,6 +141,8 @@ float scalar_field(vector v, int dim) {
         return NAN;
     }
     /* Write your function defintion here */
+    /* Replace return NAN with function of your choice */
+    return NAN;
 }
 
 void negate(vector * v) {
@@ -157,4 +164,10 @@ float dot_product(vector v1, vector v2) {
         }
         return res;
     }
+}
+
+void delete(vector * v) {
+    free(v->values);
+    v->length = 0;
+    v->size = 0;
 }
