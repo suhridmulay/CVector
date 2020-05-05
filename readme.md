@@ -15,3 +15,16 @@ We currently support,
 - Vector fields
 - Support for vector functions
 - TBD
+
+# Usage
+
+Just use it like this:
+
+``` 
+    #define TYPE <type-of-choice> 
+    #include<vector.c>
+```
+
+in your code.
+
+Note that type defaults to float if not specified otherwise.
