@@ -2,38 +2,10 @@
 #include<stdlib.h>
 #include<math.h>
 
-#ifndef TYPE
-#define TYPE float
-#endif
+#include "vector.h"
 
 // This buffer will be added to a vector when it is full
 #define BUFFER 4
-
-#define VEC_MATH_ERROR_STR "Incorrect application of vector function\n"
-#define MEM_ERR_STR "Insufficient memory to perform operation\n"
-
-struct vector_t {
-    // Actual array of values in the vector
-    TYPE * values;
-    // Length of the vector
-    int length;
-    // The size of vector space allocated to the element
-    // Size measured in 'floats'
-    int size;
-};
-
-struct vector_t vec_null = {NULL, 0, 0};
-typedef struct vector_t vector;
-
-void print_vector(vector v);
-void push_into(vector * v, float val);
-void push_array(vector * v, float * arr, int size);
-vector zeroes(int len);
-vector add(vector v1, vector v2);
-float normalize(vector v);
-float scalar_field(vector v, int dim);
-void negate(vector * v);
-void delete(vector * v);
 
 int main() {
     return 0;
@@ -49,7 +21,7 @@ void print_vector(vector v) {
     }
     printf("\b]\n");
     printf("Length of vector = %d\n", len);
-    printf("Memory allocated: %d floats\n", v.size);
+    printf("Memory allocated: %d TYPE\n", v.size);
 }
 
 void push_into(vector * v, float val) {
@@ -166,7 +138,7 @@ float dot_product(vector v1, vector v2) {
     }
 }
 
-void delete(vector * v) {
+void delete_contents(vector * v) {
     free(v->values);
     v->length = 0;
     v->size = 0;
