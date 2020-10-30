@@ -35,6 +35,9 @@ vector zeroes(int len);
 // Add two vectors of equal length
 // NOTE: Undefined behavious for non numeric inputs
 vector add(vector v1, vector v2);
+// Dot product of two vectors
+// NOTE: beahviour on non numeric types in undefined
+float dot_product(vector v1, vector v2);
 // Normalises a vector of numbers
 // NOTE: Undefined behavious on non numeric inputs
 float normalize(vector v);
