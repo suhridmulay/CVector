@@ -8,6 +8,9 @@
 
 #define VEC_MATH_ERROR_STR "Incorrect application of vector function\n"
 #define MEM_ERR_STR "Insufficient memory to perform operation\n"
+#define INVALID_USAGE_ERR "Invalid usage of vector library\n"
+#define EMPTY_POP_ERR "Attempting pop from an empty vector\n"
+#define INV_INDEX_ERR "Attempted access to invalid/out of bounds index\n"
 
 struct vector_t {
     // Actual array of values in the vector
@@ -30,6 +33,8 @@ void push_into(vector * v, TYPE val);
 // Push an array of values into vector
 // NOTE: Only shallow copies are created
 void push_array(vector * v, TYPE * arr, int size);
+// Pops out a single element from the end of vector
+TYPE pop(vector * v);
 // Generate a vector of FP 0s 
 vector zeroes(int len);
 // Add two vectors of equal length
@@ -49,3 +54,6 @@ void negate(vector * v);
 // Delete the contents of the vector
 // NOTE: vector itself is not deleted
 void delete_contents(vector * v);
+// At function returns a pointer to the element at given index
+// At function raises an error when index is invalid or out of bounds
+TYPE * at(vector * v, int ind);

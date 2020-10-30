@@ -24,7 +24,7 @@ void print_vector(vector v) {
     printf("Memory allocated: %d TYPE\n", v.size);
 }
 
-void push_into(vector * v, float val) {
+void push_into(vector * v, TYPE val) {
     if (v->size == v->length) {
         // If vector is full
         int size = v->size;
@@ -54,7 +54,7 @@ void push_into(vector * v, float val) {
     }
 }
 
-void push_array(vector * v, float * arr, int size) {
+void push_array(vector * v, TYPE * arr, int size) {
     for(int i = 0; i < size; i++) {
         push_into(v, arr[i]);
     }
@@ -142,4 +142,25 @@ void delete_contents(vector * v) {
     free(v->values);
     v->length = 0;
     v->size = 0;
+}
+
+TYPE pop(vector * v) {
+    int ind = v->length - 1;
+    if (ind < 0) {
+        fprintf(stderr, "ERROR: %s", INVALID_USAGE_ERR);
+        fprintf(stderr, "ERROR: %s", EMPTY_POP_ERR);
+        exit(-1);
+    }
+    v->length = ind;
+    return v->values[ind];
+}
+
+TYPE * at(vector * v, int ind) {
+    if (ind > 0 && ind < v->length) {
+        return &(v->values[ind]);
+    } else {
+        fprintf(stderr, "ERROR: %s", INVALID_USAGE_ERR);
+        fprintf(stderr, "ERROR: %s", INV_INDEX_ERR);
+        exit(-1);
+    }
 }

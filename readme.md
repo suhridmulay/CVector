@@ -10,9 +10,9 @@ We currently support,
 2. Vector addition
 3. Dot product
 4. Normalized value
+5. Vector fields
 
 ## Planned
-- Vector fields
 - Support for vector functions
 - TBD
 
@@ -22,8 +22,10 @@ Just use it like this:
 
 ``` 
     #define TYPE <type-of-choice> 
-    #include<vector.c>
+    #include<path/to/vector.h>
 ```
+
+During compilation add vector.c to the list of files to be compiled
 
 in your code.
 
